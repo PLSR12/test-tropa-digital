@@ -1,0 +1,65 @@
+{
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "env": {
+    "browser": true,
+    "es2020": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:prettier/recommended",
+    "plugin:react-redux/recommended"
+  ],
+  "plugins": ["react", "react-hooks", "prettier", "react-redux", "simple-import-sort"],
+  "rules": {
+    // "prettier/prettier": [
+    //   "error",
+    //   {
+    //     "semi": true, // Exigir o uso de ponto e vírgula
+    //     "endOfLine": "lf" // Garantir que a quebra de linha seja LF
+    //   }
+    // ],
+    "react/prop-types": "off",
+    "no-unused-vars": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "prettier/prettier": "off",
+    "react/react-in-jsx-scope": "off",
+    "react-hooks/rules-of-hooks": "off",
+    "react-redux/useSelector-prefer-selectors": "off",
+    "react-redux/explicit-module-boundary-types": "off",
+    "react-redux/no-unused-prop-types": "off",
+    "react/display-name": "off",
+    "no-extra-boolean-cast": "off",
+    "semi": ["error", "always"], // Exigir o ponto e vírgula sempre
+    "simple-import-sort/imports": [
+      "warn",
+      {
+        // 1. React e bibliotecas externas.
+        // 2. Módulos internos (components, utils, etc.).
+        // 3. Importações relativas subindo diretórios.
+        // 4. Importações relativas dentro do mesmo diretório.
+        // 5. Arquivos estáticos (CSS, imagens, etc.).
+        "groups": [
+          ["^react", "^@?\\w"],
+          ["^@/(.*)", "^components", "^utils", "^services", "^hooks"],
+          ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
+          ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
+          ["^.+\\.(css|scss|sass|less|png|jpg|svg)$"]
+        ]
+      }
+    ]
+  }
+}
