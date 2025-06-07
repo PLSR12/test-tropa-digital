@@ -130,7 +130,8 @@ const EventsPage = () => {
     {
       key: "actions",
       align: "right",
-      responsive: ["xl"],
+      responsive: ["xs", "xl", "sm"],
+
       render: () => (
         <Dropdown menu={{ items: menuItems }} trigger={["click"]}>
           <Button type="text" icon={<MoreOutlined style={{ color: "#cc6237" }} />} />
