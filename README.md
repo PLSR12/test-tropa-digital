@@ -1,54 +1,56 @@
-# React + TypeScript + Vite
+# 🎯 Teste Técnico – Tropa Digital
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este projeto é uma aplicação web desenvolvida como parte de um desafio técnico para a **Tropa Digital**. Ele apresenta uma interface administrativa com funcionalidades de listagem, filtragem e gerenciamento de eventos.
 
-Currently, two official plugins are available:
+## Live project
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [DEPLOY](https://test-tropa-digital.vercel.app//)
 
-## Expanding the ESLint configuration
+## 🧪 Tecnologias Utilizadas
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- ⚛️ **React + TypeScript**
+- ⚡ **Vite**
+- 🎨 **Ant Design (Antd)**
+- 💅 **Styled-components**
+- 📦 **Axios + React Query**
+- 🧪 **MirageJS** (Mock API)
+- ☁️ **Deploy via Vercel**
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 💅 Abordagem escolhida para estilização
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Para a estilização da aplicação, utilizamos o styled-components, buscando otimizar o tempo de desenvolvimento, garantir alta compatibilidade com a biblioteca de UI escolhida, o Ant Design (antd), além de aproveitar seu suporte nativo à temificação, facilitando a implementação e manutenção de temas personalizados.
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+## ✨ Funcionalidades
+
+✅ Listagem de eventos com paginação  
+✅ Filtro de eventos por busca (dinâmico)  
+✅ Design responsivo para dispositivos móveis  
+✅ Skeleton de carregamento durante requisições  
+✅ Dropdown de ações (Editar / Excluir – ainda não implementado)  
+✅ Botão para criar novo evento (não funcional no momento)
+
+## 📌 Possíveis melhorias
+
+🔐 Implementar autenticação real com controle de sessão
+
+🛠 Criar telas de edição e exclusão de eventos
+
+💾 Integração com backend real
+
+## 🧹 Validação de formulários e feedbacks de erro
+
+## 🧰 Como rodar o projeto localmente
+
+```bash
+# 1. Clone o repositório
+git clone https://github.com/PLSR12/test-tropa-digital.git
+cd test-tropa-digital
+
+# 2. Instale as dependências
+npm install
+
+# 3. Inicie o servidor local
+npm run dev
 ```
