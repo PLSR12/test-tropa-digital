@@ -7,6 +7,9 @@ import SubscribeIcon from "../../icons/SubscribeIcon";
 import ProfileIcon from "../../icons/ProfileIcon";
 import LogoutIcon from "../../icons/LogoutIcon";
 import { useState } from "react";
+import LogoSmallImg from "../../assets/logo-small.png";
+import LogoImg from "../../assets/logo.png";
+import ProfileImg from "../../assets/profile.png";
 
 const { Sider } = Layout;
 const { Text } = Typography;
@@ -118,7 +121,7 @@ const Sidebar = () => {
       }}
     >
       <Logo collapsed={collapsed}>
-        <img src={collapsed ? "/src/assets/logo-small.png" : "/src/assets/logo.png"} alt="Logo" />
+        <img src={collapsed ? LogoSmallImg : LogoImg} alt="Logo" />
       </Logo>
 
       <MenuText>
@@ -149,7 +152,7 @@ const Sidebar = () => {
             justifyContent: collapsed ? "center" : "flex-start",
           }}
         >
-          <AvatarStyled src="/src/assets/profile.png" alt="profile-img" />
+          <AvatarStyled src={ProfileImg} alt="profile-img" />
           <div className="user-details">
             <Text strong>Kaique Steck</Text>
             <Text type="secondary" style={{ fontSize: 12 }}>

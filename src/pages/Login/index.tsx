@@ -21,6 +21,7 @@ import { IoEyeOutline } from "react-icons/io5";
 import { GoEyeClosed } from "react-icons/go";
 import NAVIGATION_CONSTANTS from "../../constants/navigations";
 import { useNavigate } from "react-router-dom";
+import ProfileLoginImg from "/src/assets/profile-login.png";
 
 const LoginPage = () => {
   const [form] = Form.useForm();
@@ -120,7 +121,7 @@ const LoginPage = () => {
 
           <ImageColumn xs={12} xl={12}>
             <ImageWrapper>
-              <LoginImage src="/src/assets/profile-login.png" alt="Ilustração" />
+              <LoginImage src={ProfileLoginImg} alt="Ilustração" />
             </ImageWrapper>
           </ImageColumn>
         </LoginRow>
