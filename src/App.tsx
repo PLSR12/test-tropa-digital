@@ -1,30 +1,35 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
+import { ConfigProvider } from "antd";
+import { antDefaultTheme } from "./styles/ant/default";
+import { BrowserRouter } from "react-router-dom";
+import { GlobalStyle } from "./styles/global";
+import Router from "./routes";
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
+import locale from "antd/locale/pt_BR";
+import { makeServer } from "./mirage/server";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { useEffect } from "react";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const queryClient = new QueryClient();
+  dayjs.extend(utc);
+  dayjs.extend(timezone);
+
+  // iniciar servidor simulando uma api
+  useEffect(() => {
+    makeServer();
+  }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
-    </>
+    <ConfigProvider theme={antDefaultTheme} locale={locale}>
+      <GlobalStyle />
+      <BrowserRouter>
+        <QueryClientProvider client={queryClient}>
+          <Router />
+        </QueryClientProvider>
+      </BrowserRouter>
+    </ConfigProvider>
   );
 }
 
