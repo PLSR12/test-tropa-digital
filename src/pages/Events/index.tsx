@@ -9,8 +9,10 @@ import type { IEvent } from "../../types/IEvents";
 import type { ColumnsType } from "antd/es/table";
 import { Button } from "../../components/Button";
 import StatusIndicator from "../../components/StatusIndicator";
+import { useScreenDetector } from "../../hooks/useScreenDetector";
 
 const EventsPage = () => {
+  const { isDesktop } = useScreenDetector();
   const [searchTerm, setSearchTerm] = useState("");
   const [pagination, setPagination] = useState({ page: 1 });
   const { data: events, isLoading } = useGetListEvents(pagination);
@@ -69,38 +71,53 @@ const EventsPage = () => {
   ];
 
   const columns: ColumnsType<IEvent> = [
+    // {
+    //   title: "Evento",
+    //   key: "responsive",
+    //   responsive: ["xs", "sm"],
+    //   render: (_, record: IEvent) => (
+    //     <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+    //       <strong>{record.name}</strong>
+    //       <span>Equipes: {record.teams}</span>
+    //       <span>Data: {record.date}</span>
+    //       <StatusIndicator status={record.status} />
+    //     </div>
+    //   ),
+    // },
     {
-      title: "Evento",
-      key: "responsive",
-      responsive: ["xs", "sm"],
-      render: (_, record: IEvent) => (
-        <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-          <strong>{record.name}</strong>
-          <span>Equipes: {record.teams}</span>
-          <span>Data: {record.date}</span>
-          <StatusIndicator status={record.status} />
-        </div>
-      ),
-    },
-    {
-      title: "Nome do evento",
+      title: !isDesktop ? "Evento" : "Nome do evento",
       dataIndex: "name",
       key: "name",
-      responsive: ["md"],
+      responsive: ["xs", "xl", "sm"],
+      render: (text, record) => {
+        // Aqui você pode usar um hook para detectar tamanho da tela (ex: useWindowSize)
+        // e renderizar uma versão simplificada ou completa
+        if (!isDesktop) {
+          return (
+            <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+              <strong>{record.name}</strong>
+              <span>Equipes: {record.teams}</span>
+              <span>Data: {record.date}</span>
+              <StatusIndicator status={record.status} />
+            </div>
+          );
+        }
+        return text;
+      },
     },
     {
       title: "Total de equipes",
       dataIndex: "teams",
       key: "teams",
       align: "left",
-      responsive: ["md"],
+      responsive: ["xl"],
     },
     {
       title: "Status",
       dataIndex: "status",
       key: "status",
       align: "left",
-      responsive: ["md"],
+      responsive: ["xl"],
       render: (status: string) => <StatusIndicator status={status} />,
     },
     {
@@ -108,12 +125,12 @@ const EventsPage = () => {
       dataIndex: "date",
       key: "date",
       align: "left",
-      responsive: ["md"],
+      responsive: ["xl"],
     },
     {
       key: "actions",
       align: "right",
-      responsive: ["md"],
+      responsive: ["xl"],
       render: () => (
         <Dropdown menu={{ items: menuItems }} trigger={["click"]}>
           <Button type="text" icon={<MoreOutlined style={{ color: "#cc6237" }} />} />
