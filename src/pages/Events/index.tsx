@@ -72,7 +72,7 @@ const EventsPage = () => {
     {
       title: "Evento",
       key: "responsive",
-      responsive: ["xs"],
+      responsive: ["xs", "sm"],
       render: (_, record: IEvent) => (
         <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
           <strong>{record.name}</strong>
