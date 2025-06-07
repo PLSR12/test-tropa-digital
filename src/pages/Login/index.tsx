@@ -22,6 +22,7 @@ import { GoEyeClosed } from "react-icons/go";
 import NAVIGATION_CONSTANTS from "../../constants/navigations";
 import { useNavigate } from "react-router-dom";
 import ProfileLoginImg from "/src/assets/profile-login.png";
+import LogoImg from "/src/assets/logo.png";
 
 const LoginPage = () => {
   const [form] = Form.useForm();
@@ -59,7 +60,7 @@ const LoginPage = () => {
         <LoginRow>
           <FormColumn xs={12} xl={12}>
             <FormContent>
-              <Logo src="/src/assets/logo.png" alt="Logo" />
+              <Logo src={LogoImg} alt="Logo" />
 
               <LoginTitle>Bem-vindo de volta</LoginTitle>
               <LoginSubtitle>Entre com sua conta para acessar o painel.</LoginSubtitle>
