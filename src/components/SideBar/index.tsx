@@ -1,5 +1,4 @@
-import { Layout, Menu, Avatar, Typography, Divider } from "antd";
-import styled from "styled-components";
+import { Layout, Typography } from "antd";
 import { RxDashboard } from "react-icons/rx";
 import { MdOutlineCalendarMonth } from "react-icons/md";
 import TeamsIcon from "../../icons/TeamsIcon";
@@ -10,91 +9,10 @@ import { useState } from "react";
 import LogoSmallImg from "../../assets/logo-small.png";
 import LogoImg from "../../assets/logo.png";
 import ProfileImg from "../../assets/profile.png";
+import { AvatarStyled, BottomUserInfo, DividerStyled, Logo, MenuStyled, MenuText } from "./styles";
 
 const { Sider } = Layout;
 const { Text } = Typography;
-
-interface ICollapsedComponent {
-  collapsed: boolean;
-}
-
-const MenuText = styled.div`
-  padding: 0px 24px;
-  margin-top: 10px;
-  transition: opacity 0.3s;
-
-  span {
-    color: #a3a3a3;
-    font-size: 12px;
-    font-weight: 600;
-    font-family: "Roboto";
-    letter-spacing: 1px;
-    line-height: 15px;
-  }
-`;
-
-const Logo = styled.div<ICollapsedComponent>`
-  height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: ${({ collapsed }) => (collapsed ? "center" : "flex-start")};
-  padding: ${({ collapsed }) => (collapsed ? "0" : "0 24px")};
-  font-weight: bold;
-  color: #cc6237;
-  font-size: 20px;
-
-  img {
-    /* width: ${({ collapsed }) => (collapsed ? "80px" : "100%")}; */
-    height: 24px;
-    margin-right: ${({ collapsed }) => (collapsed ? "0" : "8px")};
-    transition: margin 0.3s;
-  }
-`;
-
-const BottomUserInfo = styled.div<ICollapsedComponent>`
-  position: absolute;
-  bottom: 24px;
-  left: 0;
-  width: 100%;
-  padding-left: ${({ collapsed }) => (collapsed ? "0" : "24px")};
-  text-align: ${({ collapsed }) => (collapsed ? "center" : "left")};
-
-  .user-details {
-    display: ${({ collapsed }) => (collapsed ? "none" : "flex")};
-    flex-direction: column;
-  }
-`;
-
-const MenuStyled = styled(Menu)`
-  .ant-menu-item-selected {
-    .ant-menu-title-content {
-      color: #fff;
-      font-weight: 600;
-      font-size: 14px;
-      line-height: 15px;
-    }
-  }
-  .ant-menu-title-content {
-    color: #252525;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 15px;
-  }
-`;
-
-const DividerStyled = styled(Divider)<ICollapsedComponent>`
-  position: absolute;
-  bottom: 30%;
-  transition: all 0.3s ease;
-  width: 100%;
-`;
-
-const AvatarStyled = styled(Avatar)`
-  width: 45px !important;
-  height: 45px !important;
-  border-radius: 30%;
-  border: 1px solid #cc6237;
-`;
 
 const Sidebar = () => {
   const [collapsed, setCollapsed] = useState(false);
